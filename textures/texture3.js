@@ -1,5 +1,8 @@
 const r = require("raylib");
 
+function convertToRadians(degree) {
+    return degree * (Math.PI / 180);
+}
 function draw(world) {
     const target = r.LoadRenderTexture(10, 10);
 
@@ -11,9 +14,13 @@ function draw(world) {
 
     r.ClearBackground(r.DARKGRAY);
 
-    r.DrawTexture(target.texture, 50, 50, r.WHITE);
-    r.DrawTexture(target.texture, 300, 50, r.WHITE);
-    r.DrawTexture(target.texture, 550, 50, r.WHITE);
+    for (let angle = 0; angle < 720; angle += 20) {
+        const x = Math.cos(convertToRadians(angle + world.cf)) * 200 + world.window.WIDTH / 2;
+        const y = Math.sin(convertToRadians(angle + world.cf)) * 200 + world.window.HEIGHT / 2;
+        // console.log(x, y);
+
+        r.DrawTexture(target.texture, x, y, r.WHITE);
+    }
 
     r.EndDrawing();
 }

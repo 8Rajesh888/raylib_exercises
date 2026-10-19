@@ -1,24 +1,21 @@
 const r = require("raylib");
 
-function draw(world) {
-    const target = r.LoadRenderTexture(200, 200);
+function draw(world, x, y, target) {
 
     r.BeginTextureMode(target);
-    r.ClearBackground(r.BLACK)
-    for (let i = 5; i < world.cf; i = i + 10)
-        r.DrawCircle(i, 60, 5, r.WHITE);
-    // r.DrawCircle(world.x, 80, 5, r.WHITE);
-    // world.x += 1;
+    // r.ClearBackground(r.BLACK)
+    r.DrawCircle(x, y, 5, r.WHITE);
+
     r.EndTextureMode();
+
     r.BeginDrawing();
 
-    r.ClearBackground(r.DARKGRAY);
+    r.ClearBackground(r.BLACK);
 
-    r.DrawTexture(target.texture, 50, 50, r.WHITE);
-    r.DrawTexture(target.texture, 300, 50, r.WHITE);
-    r.DrawTexture(target.texture, 550, 50, r.WHITE);
+    r.DrawTexture(target.texture, 0, 0, r.WHITE);
 
     r.EndDrawing();
+
 }
 
 function teardown() {
@@ -35,11 +32,16 @@ function loop(world) {
     // r.DrawCircle(80, 80, 15, r.WHITE);
 
     // r.EndTextureMode();
+    let x = 0;
+    let y = 0;
+    const target = r.LoadRenderTexture(600, 400);
 
     while (!r.WindowShouldClose()) {
         world.cf++;
+        x += 10;
+        y += 10;
         // no update!
-        draw(world);
+        draw(world, x, y, target);
     }
 }
 
@@ -50,7 +52,7 @@ function setup() {
 
     r.SetTraceLogLevel(r.LOG_NONE);
     r.InitWindow(windowWidth, windowHeight, "Texture");
-    r.SetTargetFPS(60);
+    r.SetTargetFPS(30);
 
     return {
         window: {
