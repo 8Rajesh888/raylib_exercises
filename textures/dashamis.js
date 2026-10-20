@@ -10,8 +10,6 @@ function draw(world, target) {
     rows = 10;
     columns = 10;
 
-
-
     // 1st col
     //china
     for (let y = 0; y < rows; y++) {
@@ -77,8 +75,6 @@ function draw(world, target) {
                 r.DrawTexture(target[1].texture, x * width, y * height, r.WHITE);
             else
                 r.DrawTexture(target[0].texture, x * width, y * height, r.WHITE);
-            // const tg = target[(y % x) % 4 % 2];
-            // r.DrawTexture(tg.texture, x * width, y * height, r.WHITE);
         }
     }
 
@@ -94,8 +90,6 @@ function draw(world, target) {
     r.DrawLineEx({ x: 300, y: 0 }, { x: 300, y: 900 }, 4, r.BLACK);
     r.DrawLineEx({ x: 600, y: 0 }, { x: 600, y: 900 }, 4, r.BLACK);
 
-
-    // r.DrawRectangle(x * width, y * height, width, height, colour);
     r.EndDrawing();
 
 }
