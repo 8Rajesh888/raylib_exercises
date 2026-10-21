@@ -9,6 +9,11 @@ function draw(world) {
     r.DrawTexture(world.target.texture, 300, 50, r.WHITE);
     r.DrawTexture(world.target.texture, 550, 50, r.WHITE);
 
+    // r.DrawTriangle({ x: 279, y: 202 }, { x: 172, y: 286 }, { x: 271, y: 255 }, r.RED);
+    r.DrawTriangle({ x: 30, y: 30 }, { x: 30, y: 0 }, { x: 0, y: 30 }, r.RED);
+    // r.DrawTriangle({x : 0, y : 0},)
+
+
     r.EndDrawing();
 }
 
