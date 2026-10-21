@@ -116,12 +116,17 @@ function loop(world) {
     const target2 = r.LoadRenderTexture(30, 30);
 
     r.BeginTextureMode(target2);
-
+    const colour = {
+        r: 100,
+        g: 100,
+        b: 100,
+        a: 150,
+    }
     r.ClearBackground(r.DARKBLUE);
     for (let i = 0; i < 10; i++) {
         const x = 30 * Math.random();
         const y = 30 * Math.random();
-        r.DrawCircle(x, y, 5, r.GRAY);
+        r.DrawCircle(x, y, 5, colour);
     }
     r.EndTextureMode();
 
