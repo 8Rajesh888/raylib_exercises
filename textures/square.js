@@ -103,13 +103,11 @@ function loop(world) {
 
     r.BeginTextureMode(target1);
 
-    r.ClearBackground(r.DARKBLUE);
+    r.ClearBackground(r.WHITE);
 
+    r.DrawTriangle({ x: 0, y: 30 }, { x: 30, y: 0 }, { x: 0, y: 0 }, r.DARKBLUE);
 
-    // r.DrawTriangle({ x: 0, y: 0 }, { x: 30, y: 0 }, { x: 0, y: 30 }, r.WHITE)
-
-    r.DrawTriangle({ x: 30, y: 30 }, { x: 0, y: 30 }, { x: 30, y: 0 }, r.BLUE);
-
+    // r.DrawTriangle({ x: 30, y: 30 }, { x: 0, y: 30 }, { x: 30, y: 0 }, r.BLUE);
 
     r.EndTextureMode();
 
@@ -118,12 +116,8 @@ function loop(world) {
     r.BeginTextureMode(target2);
 
     r.ClearBackground(r.DARKBLUE);
-    for (let y = 0; y < 30; y++) {
-        for (let x = 0; x < 30; x++) {
-            const colour = x < y ? r.WHITE : r.BLUE;
-            r.DrawRectangle(x, y, 1, 1, colour);
-        }
-    }
+
+    r.DrawTriangle({ x: 0, y: 30 }, { x: 30, y: 0 }, { x: 0, y: 0 }, r.WHITE);
 
     r.EndTextureMode();
 
