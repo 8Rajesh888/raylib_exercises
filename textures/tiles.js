@@ -5,15 +5,6 @@ function getRandomColour(palette) {
     return palette[index];
 }
 
-function getRandomRG(colour) {
-    return {
-        r: colour.r + Math.random() * 110,
-        g: colour.g + Math.random() * 30,
-        b: colour.b,
-        a: colour.a,
-    }
-}
-
 function draw(world, mTarget) {
     r.BeginDrawing();
 
@@ -48,20 +39,24 @@ function loop(world) {
     const rowLength = 30;
     const colLength = 180;
 
-
-    // 1st col
-    //china
     for (let row = 0; row < rowLength; row++) {
         for (let col = 0; col < colLength; col++) {
+
             const colour = getRandomColour(world.palette);
-            const noOfRepeatitions = Math.random() * 50 + 20;
-            for (let innerCol = col; innerCol < col + noOfRepeatitions; innerCol++) {
-                const randomRGColour = getRandomRG(colour);
-                r.DrawTexture(target.texture, innerCol * width, row * height, randomRGColour);
+            const noOfRepeatitions = Math.floor(Math.random() * 50 + 20);
+            const remainingCols = colLength - col;
+            const innerColLength = Math.min(noOfRepeatitions, remainingCols)
+
+            for (let innerCol = col; innerCol < col + innerColLength; innerCol++) {
+
+                r.DrawTexture(target.texture, innerCol * width, row * height, colour);
+
             }
-            col += noOfRepeatitions - 2;
+
+            col += innerColLength - 1;
         }
     }
+
     r.EndTextureMode(mTarget);
     while (!r.WindowShouldClose()) {
         world.cf++;
