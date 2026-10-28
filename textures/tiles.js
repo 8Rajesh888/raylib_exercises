@@ -51,7 +51,6 @@ function loop(world) {
             const startY = row * height;
             const blockHeight = height;
 
-
             for (let innerCol = col; innerCol < col + innerColLength; innerCol++) {
 
                 r.DrawTexture(target.texture, innerCol * width, row * height, colour);
@@ -62,7 +61,6 @@ function loop(world) {
             for (let index = 0; index < 10; index++) {
                 const x = r.GetRandomValue(startX, startX + blockWidth);
                 const y = r.GetRandomValue(startY, startY + blockHeight);
-                // console.log(x);
 
                 const rectWidth = Math.max(Math.random() * (blockWidth * 0.7), blockWidth / 5);
                 const rectheight = Math.max(Math.random() * (blockHeight * 0.7), blockHeight / 5);
@@ -70,22 +68,6 @@ function loop(world) {
                 r.DrawRectangle(x, y, rectWidth, rectheight, rectColour);
                 // r.DrawCircle(x, y, 1, r.RED);
             }
-
-            // const startX = col * width;
-            // const endX = innerColLength * width;
-            // const startY = row * height;
-            // const endY = (row + 1) * height;
-            // for (let index = 0; index < 20; index++) {
-            //     const x = r.GetRandomValue(startX, endX);
-            //     const y = r.GetRandomValue(startY, endY);
-            //     // console.log(x);
-
-            //     const rectWidth = Math.max(Math.random() * (startX - endX), (startX - endX) / 5);
-            //     const rectheight = Math.max(Math.random() * (startY - endY), (startY - endY) / 5);
-            //     const rectColour = r.ColorAlpha(r.WHITE, Math.random() * 0.25);
-            //     r.DrawRectangle(x, y, rectWidth, rectheight, rectColour);
-            //     // r.DrawCircle(x, y, 1, r.RED);
-            // }
 
             col += innerColLength - 1;
         }
