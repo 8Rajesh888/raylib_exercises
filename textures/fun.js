@@ -25,15 +25,9 @@ function draw(world, target) {
         { x: 600, y: 600 },
 
     ]
-    for (const start of startArray) {
-        r.DrawTexture(target[0].texture, start.x, start.y, r.WHITE)
+    r.DrawTexture(target.texture, start.x, start.y, r.WHITE)
 
-    }
 
-    r.DrawLineEx({ x: 0, y: 300 }, { x: 900, y: 300 }, 4, r.BLACK);
-    r.DrawLineEx({ x: 0, y: 600 }, { x: 900, y: 600 }, 4, r.BLACK);
-    r.DrawLineEx({ x: 300, y: 0 }, { x: 300, y: 900 }, 4, r.BLACK);
-    r.DrawLineEx({ x: 600, y: 0 }, { x: 600, y: 900 }, 4, r.BLACK);
 
     r.EndDrawing();
 
@@ -69,12 +63,23 @@ function loop(world) {
         1: target2,
     }
 
+    const mainTarget = r.LoadRenderTexture(900, 900);
+
+    r.BeginTextureMode(target2);
+
+    r.DrawLineEx({ x: 0, y: 300 }, { x: 900, y: 300 }, 4, r.BLACK);
+    r.DrawLineEx({ x: 0, y: 600 }, { x: 900, y: 600 }, 4, r.BLACK);
+    r.DrawLineEx({ x: 300, y: 0 }, { x: 300, y: 900 }, 4, r.BLACK);
+    r.DrawLineEx({ x: 600, y: 0 }, { x: 600, y: 900 }, 4, r.BLACK);
+
+
+    r.EndTextureMode();
+
     while (!r.WindowShouldClose()) {
         world.cf++;
-        // x += 10;
-        // y += 10;
-        // no update!
-        draw(world, target);
+
+        update(target)
+        draw(world, mainTarget);
     }
 }
 
